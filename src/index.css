@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+:root {
+  --black: #3e3e3e;
+  --white: #ffffff;
+  --soft-yellow: #fff8ce;
+  --blue: #45c6dd;
+  --blue-opaque: rgba(69, 198, 221, 0.1);
+  --green: #31c491;
+  --green-opaque: rgba(49, 196, 145, 0.1);
+  --grey01: #eeeeee;
+  --grey05: #676767;
+
+  --font-demi: 'commons_demibold', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+
+  --font-regular: 'commons_regular', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+
+  --font-medium: 'commons_medium', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+@font-face {
+  font-family: 'commons_regular';
+  src: url(./assets/fonts/TTCommonsRegular.ttf);
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'commons_medium';
+  src: url(./assets/fonts/TTCommonsMedium.ttf);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'commons_demibold';
+  src: url(./assets/fonts/TTCommonsDemiBold.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  font-size: 10px;
+  font-weight: normal;
+  scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: var(--font-regular);
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgba(244, 246, 250, 1);
+}
+
+.main-80 {
+  width: 80vw;
+  margin: 0 auto;
+  margin-bottom: 113px;
+}
+
+.basic-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.basic-table th,
+.basic-table td {
+  text-align: left;
+  padding-left: 1.6rem;
+}
+
+.basic-table thead tr th {
+  color: var(--black);
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-family: var(--font-medium);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.basic-table thead {
+  background-color: var(--soft-yellow);
+  height: 4rem;
+  position: sticky;
+  top: 0;
+}
+
+.basic-table thead,
+.basic-table tbody tr {
+  height: 3.2rem;
+}
+
+.basic-table thead tr th {
+  color: var(--black);
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-family: var(--font-medium);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.basic-table tbody tr td {
+  color: var(--black);
+  font-size: 1.4rem !important;
+  font-family: var(--font-medium);
+  font-weight: 500;
+  letter-spacing: 0;
+  background-color: var(--white);
+  transform: background-color 1s;
+}
+
+.basic-table tbody tr:hover > td {
+  background-color: var(--grey01);
+}
+
+.basic-table tbody .basic-table-selected-row td {
+  background-color: var(--black) !important;
+  color: var(--white);
+}
+
+.ReactModal__Overlay--after-open {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.comm-r-14 {
+  font-family: var(--font-regular);
+  font-size: 1.4rem;
+}
+
+.mont-b-20 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+}
+
+.comm-d-14 {
+  font-family: var(--font-demi);
+  font-size: 1.4rem;
+}

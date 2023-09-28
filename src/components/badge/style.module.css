@@ -1,0 +1,18 @@
+.badge {
+  font-size: 1.1rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.8rem;
+  font-family: var(--font-bold);
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.badge.success {
+  color: var(--green);
+  background-color: var(--green-opaque);
+}
+
+.badge.active {
+  color: var(--blue);
+  background-color: var(--blue-opaque);
+}
