@@ -153,3 +153,33 @@ body {
   font-family: var(--font-demi);
   font-size: 1.4rem;
 }
+
+.pagination-wrapper {
+  width: 40%;
+  margin-left: auto;
+  height: 50px;
+  margin-top: 16px;
+  background-color: #ffffff;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.pagination-wrapper ul {
+  display: inherit;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pagination-wrapper li a {
+  padding: 16px;
+}
+
+.pagination-wrapper .disabled {
+  opacity: 25%;
+}
+
+.pagination-wrapper .selected {
+  background-color: var(--grey01);
+}

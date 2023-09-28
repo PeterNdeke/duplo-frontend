@@ -6,26 +6,33 @@ import { assignBadgeStyle, nullCheck, nullCheckKeys } from '../utils';
 import BusinessPreviewModal from './business_details_modal';
 import { transactionsService } from '../services/endpoints';
 import { TableShimmer } from '../components/table/table-shimmer';
+import ReactPaginate from 'react-paginate';
 
 export default function Home({ tableHeader }) {
+  const limit = 10;
+  const [currentPage, setCurrentPage] = useState(1);
   const [loadingTransactions, setLoadingTransactions] = useState(false);
-  const [transactions, setTransactions] = useState({});
+  const [transactions, setTransactions] = useState([]);
+  const [pagination, setPagination] = useState({});
   const [orderDetails, setOrderDetails] = useState({});
   const [openBusinessDetailsModal, setOpenBusinessDetailsModal] =
     useState(false);
 
   useEffect(() => {
     fetchTransactionLog();
-  }, []);
+    // eslint-disable-next-line
+  }, [currentPage]);
 
   const fetchTransactionLog = () => {
     setLoadingTransactions(true);
-    fetch(`${transactionsService.log}`)
+    fetch(`${transactionsService.log}?limit=${limit}&page=${currentPage}`)
       .then(response => {
         return response.json();
       })
       .then(data => {
-        setTransactions(data);
+        setTransactions(data?.data?.records);
+        setCurrentPage(data?.data?.pagination.currentPage);
+        setPagination(data?.data?.pagination);
         setLoadingTransactions(false);
       });
   };
@@ -85,11 +92,12 @@ export default function Home({ tableHeader }) {
     <>
       <div className='main-80'>
         <div className={style.main_inner}>
-          {loadingTransactions && <TableShimmer />}
+          <h1 className='mb-8 mont-b-20'>Business Transaction Logs</h1>
+          {loadingTransactions && <TableShimmer stack={limit} />}
 
           {!loadingTransactions && (
             <BasicTable header={tableHeader}>
-              {transactions?.data?.records?.map((order, index) => (
+              {transactions.map((order, index) => (
                 <tr className={'py-4 border-b border-grey01'} key={index}>
                   <td
                     role='button'
@@ -115,6 +123,20 @@ export default function Home({ tableHeader }) {
                 </tr>
               ))}
             </BasicTable>
+          )}
+
+          {true && (
+            <div className='bg-white pagination-wrapper w-2/4 ml-auto h-20'>
+              <ReactPaginate
+                pageCount={pagination.pageCount ?? 0}
+                nextLabel='Next'
+                previousLabel='Previous'
+                onPageChange={newPage => {
+                  setCurrentPage(newPage.selected + 1);
+                  console.log('newPage', newPage);
+                }}
+              />
+            </div>
           )}
         </div>
       </div>
