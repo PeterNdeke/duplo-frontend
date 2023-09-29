@@ -98,13 +98,12 @@ export default function Home({ tableHeader }) {
           {!loadingTransactions && (
             <BasicTable header={tableHeader}>
               {transactions.map((order, index) => (
-                <tr className={'py-4 border-b border-grey01'} key={index}>
+                <tr className={'py-4 border-b border-grey01'} key={index}  role='button'
+                onClick={e => {
+                  e.stopPropagation();
+                  handleTransactionClick(order);
+                }}>
                   <td
-                    role='button'
-                    onClick={e => {
-                      e.stopPropagation();
-                      handleTransactionClick(order);
-                    }}
                     className='!py-8'>
                     {order.businessID}
                   </td>
